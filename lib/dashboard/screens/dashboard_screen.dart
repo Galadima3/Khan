@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:khan/dashboard/widgets/rex.dart';
 import 'package:khan/dashboard/widgets/services_widget.dart';
+import '../models/transaction_tile.dart';
 import '../widgets/balance_widget.dart';
 import '../widgets/circle_widget.dart';
+import '../widgets/exchange_rate_widget.dart';
+import '../widgets/nav_bar_widget.dart';
+import '../widgets/promo_card_widget.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
           children: [
             // Header section (fixed height)
             Container(
@@ -26,6 +31,7 @@ class DashboardScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
+                  SizedBox(height: 20),
                   // Top Row
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +78,7 @@ class DashboardScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 20),
                   const BalanceWidget(),
-                  const SizedBox(height: 45),
+                  const SizedBox(height: 25),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -93,9 +99,64 @@ class DashboardScreen extends StatelessWidget {
 
             // Expanded scrollable content
             ServicesWidget(services: services),
+
+            // Exchange Rate Card
+            ExchangeRateWidget(),
+
+            const SizedBox(height: 24),
+
+            // Nav Bar
+            NavBarWidget(),
+
+            const SizedBox(height: 24),
+
+            // Promo Card
+            PromoCardWidget(),
+
+            const SizedBox(height: 24),
+
+            // Recent Transactions
+            Padding(
+              padding: const EdgeInsets.fromLTRB(15.0, 5, 15, 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const [
+                  Text(
+                    "Recent Transactions",
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  Text("See all", style: TextStyle(color: Color(0xff264653), fontSize: 12, decoration: TextDecoration.underline)),
+                ],
+              ),
+            ),
+            const SizedBox(height: 12),
+            const TransactionTile(
+              icon: Icons.arrow_downward,
+              title: 'Receive USDT',
+              subtitle: 'P2P Transfer • 04 May 2025',
+              amount: '+\$100',
+              amountColor: Colors.green,
+            ),
+            const TransactionTile(
+              icon: Icons.arrow_upward,
+              title: 'Sent BTC',
+              subtitle: 'P2P Transfer • 04 May 2025',
+              amount: '-\$100',
+              amountColor: Colors.red,
+            ),
+            const TransactionTile(
+              icon: Icons.sync_alt,
+              title: 'Conversion',
+              subtitle: 'P2P Transfer • 04 May 2025',
+              amount: '+\$100',
+              amountColor: Colors.green,
+            ),
+            const SizedBox(height: 32),
           ],
         ),
       ),
     );
   }
 }
+
+

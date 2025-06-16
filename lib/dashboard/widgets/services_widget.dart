@@ -9,7 +9,7 @@ class ServiceItem {
 
 const List<ServiceItem> services = [
   ServiceItem(icon: Icons.shopping_cart_checkout_outlined, label: 'Shopping'),
-  ServiceItem(icon: Icons.phone_android_outlined, label: 'Airtime top-up'),
+  ServiceItem(icon: Icons.phone_android_outlined, label: 'Airtime'),
   ServiceItem(icon: Icons.send_outlined, label: 'Pay Bill'),
   ServiceItem(icon: Icons.card_giftcard_outlined, label: 'Gift Cards'),
   ServiceItem(icon: Icons.star, label: 'Deals'),
@@ -32,7 +32,7 @@ class ServicesWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+          padding: EdgeInsets.fromLTRB(20.0, 10.0, 0.0, 0.0),
           child: Text(
             "Services",
             style: TextStyle(
@@ -50,18 +50,20 @@ class ServicesWidget extends StatelessWidget {
               .map(
                 (item) =>
                 Column(
-                  mainAxisSize: MainAxisSize.min,
+                  //mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
-                      height: 56,
-                      width: 56,
+                      height: 45,
+                      width: 45,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color(0xFFEFF1F3),
                       ),
                       padding: const EdgeInsets.all(12),
-                      child: Icon(item.icon,
-                          size: 28, color: Colors.black87),
+                      child: Center(
+                        child: Icon(item.icon,
+                            size: 28, color: Colors.black87),
+                      ),
                     ),
                     // const SizedBox(height: 8),
                     Text(
@@ -74,7 +76,7 @@ class ServicesWidget extends StatelessWidget {
           )
               .toList(),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 15),
       ],
     );
   }
