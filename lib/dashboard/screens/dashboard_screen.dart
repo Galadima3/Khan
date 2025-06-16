@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:khan/dashboard/widgets/rex.dart';
 import 'package:khan/dashboard/widgets/services_widget.dart';
+import '../models/service_item.dart';
 import '../models/transaction_tile.dart';
 import '../widgets/balance_widget.dart';
 import '../widgets/circle_widget.dart';
