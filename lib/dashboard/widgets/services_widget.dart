@@ -45,7 +45,7 @@ class ServicesWidget extends StatelessWidget {
           crossAxisSpacing: 15,
           mainAxisSpacing: 15,
           shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(), // This is also important
+          physics: const NeverScrollableScrollPhysics(),
           children: services
               .map(
                 (item) =>
