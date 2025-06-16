@@ -8,19 +8,32 @@ import '../widgets/exchange_rate_widget.dart';
 import '../widgets/nav_bar_widget.dart';
 import '../widgets/promo_card_widget.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
   @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+      // TODO: handle navigation logic here
+    });
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: SingleChildScrollView(
         child: Column(
           children: [
             // Header section (fixed height)
             Container(
               padding: const EdgeInsets.all(20.0),
-
               width: double.infinity,
               decoration: const BoxDecoration(
                 color: Color(0xff5C7179),
@@ -105,11 +118,6 @@ class DashboardScreen extends StatelessWidget {
 
             const SizedBox(height: 24),
 
-            // Nav Bar
-            NavBarWidget(),
-
-            const SizedBox(height: 24),
-
             // Promo Card
             PromoCardWidget(),
 
@@ -153,6 +161,31 @@ class DashboardScreen extends StatelessWidget {
             ),
             const SizedBox(height: 32),
           ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 16),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(32),
+          child: BottomNavigationBar(
+            backgroundColor: const Color(0xff456470),
+            elevation: 10,
+            type: BottomNavigationBarType.fixed,
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.grey[400],
+            showSelectedLabels: true,
+            showUnselectedLabels: false,
+            selectedLabelStyle: const TextStyle(color: Colors.white),
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+              BottomNavigationBarItem(icon: Icon(Icons.wallet), label: 'Wallets'),
+              BottomNavigationBarItem(icon: Icon(Icons.history), label: 'History'),
+              BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Shopping'),
+              BottomNavigationBarItem(icon: Icon(Icons.help_outline), label: 'FAQ'),
+            ],
+          ),
         ),
       ),
     );

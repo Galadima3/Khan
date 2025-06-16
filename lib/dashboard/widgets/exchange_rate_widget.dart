@@ -18,12 +18,11 @@ class ExchangeRateWidget extends StatelessWidget {
             ),
           ),
           Container(
-
-            padding: const EdgeInsets.all(16),
+            padding: EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Color(0xffCBCBCB).withOpacity(0.35),
               borderRadius: BorderRadius.circular(16),
-              boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
+              //boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
             ),
             child: Row(
               children: [
